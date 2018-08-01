@@ -3,7 +3,7 @@ import re
 import urllib.request
 
 page = 2
-url = 'http://www.qiushibaie.com/8hr/page/'+str(page)+'/'
+url = 'http://www.qiushibaike.com/8hr/page/'+str(page)+'/'
 headers = ('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1')
 opener = urllib.request.build_opener()
 #opener.addheaders = [headers]
