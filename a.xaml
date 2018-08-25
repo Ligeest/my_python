@@ -1,0 +1,60 @@
+<Page x:Name="BakaOMPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mt="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:BakaControls="clr-namespace:BakaXL.Controls;assembly=BakaXL"
+      xmlns:local="clr-namespace:BakaXL.Pages.PlazaPage"
+      mc:Ignorable="d" 
+      d:DesignWidth="844" d:DesignHeight="834"
+      Title="BakaOMP">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/BakaXL;component/Icons.xaml" />
+                <ResourceDictionary Source="/BakaXL;component/Style/PlazaTypeTile.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="DynPagePannel">
+        <ScrollViewer x:Name="OMScroller" VerticalScrollBarVisibility="{Binding ElementName=OMPlayer, Path=ScrollBarVisibily}" PanningMode="Both">
+            <Grid x:Name="OM" Visibility="Visible" VerticalAlignment="Top" Opacity="10">
+                <i:Interaction.Behaviors>
+                    <ei:FluidMoveBehavior IsActive="{Binding ElementName=`x, Path=ScrollBarEnabled}">
+                        <ei:FluidMoveBehavior.EaseY>
+                            <QuinticEase EasingMode="EaseOut"/>
+                        </ei:FluidMoveBehavior.EaseY>
+                        <ei:FluidMoveBehavior.EaseX>
+                            <QuinticEase EasingMode="EaseOut"/>
+                        </ei:FluidMoveBehavior.EaseX>
+                    </ei:FluidMoveBehavior>
+                </i:Interaction.Behaviors>
+                <Image Source="http://img.ui.cn/data/file/8/9/2/1929298.jpg" Stretch="UniformToFill" />
+                <Button x:Name="BackToPlaza" Width="50"
+					Margin="10,6,0,0"
+					Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" BorderBrush="White">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="0" Color="White" Direction="0" BlurRadius="12"/>
+                    </Button.Effect>
+                    <Rectangle Width="23"
+						Height="18"
+						Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+								Visual="{DynamicResource appbar_arrow_left}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+                <BakaControls:BakaVideoPlayer x:Name="OMPlayer" Margin="156,200,156,342" BiliAid="10983037" BiliPage="1" 
+BiliApiService="Linbi-HD" PageHeight="844" ScrollBarVerticalOffset="{Binding ElementName=OMScroller, Path=(ScrollViewer.VerticalOffset)}"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
